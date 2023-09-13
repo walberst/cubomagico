@@ -45,7 +45,6 @@ box.addEventListener("mousedown", function (e) {
 
 box.addEventListener("mouseup", function (e) {
   isKeyDown = false;
-  rotateCube(-100, -330);
 });
 
 box.addEventListener("mousemove", function (e) {
