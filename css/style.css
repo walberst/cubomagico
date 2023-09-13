@@ -25,7 +25,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  perspective: 1000;
+  perspective: 2000px;
 }
 
 .box {
@@ -56,6 +56,12 @@ body {
   overflow: hidden;
   text-align: center;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 2rem;
+  background-size: 100%;
 }
 
 .box div > span::before {
@@ -84,6 +90,15 @@ body {
   z-index: -1;
   backdrop-filter: blur(2px);
   transform: rotate(-40deg);
+}
+
+.nameLetters {
+  font-size: 3.5rem;
+  font-weight: 700;
+  z-index: 10000 !important;
+  font-family: sans-serif;
+  user-select: none;
+  pointer-events: none;
 }
 
 .top {

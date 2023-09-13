@@ -20,6 +20,14 @@ for (var i of directions) {
   for (let j = 0; j < 9; j++) {
     let span = document.createElement("span");
     direction.appendChild(span);
+
+    let name = "WALBERST1";
+
+    if (i === "top") {
+      let nameCharacters = name.split("");
+      span.innerHTML = nameCharacters[j];
+      span.classList.add("nameLetters");
+    }
   }
 
   direction
