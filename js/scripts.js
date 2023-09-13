@@ -34,3 +34,27 @@ for (var i of directions) {
     .querySelector("span")
     .setAttribute("style", `--clr:${color[directions.indexOf(i)]}`);
 }
+
+var isKeyDown = false;
+rotateCube(-100, -330);
+
+box.addEventListener("mousedown", function (e) {
+  isKeyDown = true;
+  rotateCube(e.clientX, e.clientY);
+});
+
+box.addEventListener("mouseup", function (e) {
+  isKeyDown = false;
+  rotateCube(-100, -330);
+});
+
+box.addEventListener("mousemove", function (e) {
+  isKeyDown && rotateCube(e.clientX, e.clientY);
+});
+
+function rotateCube(x, y) {
+  let Xvalue = Math.floor(x / 2 + 100);
+  let Yvalue = Math.floor(y / 2 + 100);
+
+  box.style.transform = `rotateX(${Yvalue}deg) rotateY(${Xvalue}deg)`;
+}
