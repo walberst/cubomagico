@@ -40,7 +40,21 @@ body {
   width: 350px;
   height: 350px;
   position: absolute;
-  background: var(--clr);
+  background: #fff;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(350px / 4), 1fr));
+  gap: 4px;
+  padding: 4px;
+}
+
+.box div span {
+  height: calc(350px / 3 - 6px);
+  background-color: var(--clr);
+  border-radius: 10px;
+  position: relative;
+  z-index: -1;
+  overflow: hidden;
+  text-align: center;
 }
 
 .top {

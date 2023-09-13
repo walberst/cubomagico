@@ -16,4 +16,13 @@ for (var i of directions) {
   box.appendChild(direction);
   direction.classList.add(i);
   direction.setAttribute("style", `--clr:${color[directions.indexOf(i)]}`);
+
+  for (let j = 0; j < 9; j++) {
+    let span = document.createElement("span");
+    direction.appendChild(span);
+  }
+
+  direction
+    .querySelector("span")
+    .setAttribute("style", `--clr:${color[directions.indexOf(i)]}`);
 }
