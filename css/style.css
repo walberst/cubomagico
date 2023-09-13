@@ -55,6 +55,35 @@ body {
   z-index: -1;
   overflow: hidden;
   text-align: center;
+  overflow: hidden;
+}
+
+.box div > span::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  backdrop-filter: blur(5px);
+  background: linear-gradient(to bottom right, var(--clr) 60%, #bfbfbf);
+  box-shadow: -10px -20px 30px rgba(0, 0, 0, 0.2);
+  z-index: -1;
+}
+
+.box div > span::after {
+  content: "";
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  top: 0;
+  left: 0;
+  background: linear-gradient(#ffffff44 50%, transparent 50%);
+  z-index: -1;
+  backdrop-filter: blur(2px);
+  transform: rotate(-40deg);
 }
 
 .top {
