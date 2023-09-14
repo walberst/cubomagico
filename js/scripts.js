@@ -46,8 +46,6 @@ function createDirection(directionName) {
 
     span.classList.add(`cube_${directionName}`);
 
-    span.classList.add("x" + j);
-
     const configs = buttonConfig[j];
     for (var config of configs) {
       span.appendChild(buttonsRotateBlock(config.side, config.column));
@@ -125,16 +123,46 @@ function rotateBlock(side, direction, column) {
   }
 
   if (direction === "v" && side === "up") {
-    const temp = cube["front"][`${direction}${column}`];
+    const temp = JSON.parse(
+      JSON.stringify([
+        cube["front"][`${direction}${column}`][0].className,
+        cube["front"][`${direction}${column}`][1].className,
+        cube["front"][`${direction}${column}`][2].className,
+      ])
+    );
     const facesOrder = ["front", "bottom", "back", "top"];
     for (let i = 0; i < facesOrder.length; i++) {
       const currentFace = facesOrder[i];
       const nextFace = facesOrder[(i + 1) % facesOrder.length];
+      var x = 0;
       for (var sub of cube[currentFace][`${direction}${column}`]) {
         sub.className = cube[nextFace][`${direction}${column}`][0].className;
         if (currentFace === "top") {
-          sub.className = temp[0].className;
+          sub.className = temp[x];
         }
+        x++;
+      }
+    }
+  }
+  if (direction === "v" && side === "down") {
+    const temp = JSON.parse(
+      JSON.stringify([
+        cube["front"][`${direction}${column}`][0].className,
+        cube["front"][`${direction}${column}`][1].className,
+        cube["front"][`${direction}${column}`][2].className,
+      ])
+    );
+    const facesOrder = ["front", "top", "back", "bottom"];
+    for (let i = 0; i < facesOrder.length; i++) {
+      const currentFace = facesOrder[i];
+      const nextFace = facesOrder[(i + 1) % facesOrder.length];
+      var x = 0;
+      for (var sub of cube[currentFace][`${direction}${column}`]) {
+        sub.className = cube[nextFace][`${direction}${column}`][0].className;
+        if (currentFace === "top") {
+          sub.className = temp[x];
+        }
+        x++;
       }
     }
   }
