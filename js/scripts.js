@@ -1,59 +1,70 @@
-let box = document.querySelector(".box");
+// Select the container element
+const box = document.querySelector(".box");
 
-const color = [
-  "#3db911",
-  "#df980b",
-  "#04a4f4",
-  "#04f4a8",
-  "#1932f3",
-  "#bd0049",
+// Define colors and directions
+const colors = [
+  "#4169E1",
+  "#32CD32",
+  "#FF4500",
+  "#FFD700",
+  "#8A2BE2",
+  "#FFB6C1",
 ];
-
 const directions = ["front", "back", "left", "right", "top", "bottom"];
 
-for (var i of directions) {
-  let direction = document.createElement("div");
-  box.appendChild(direction);
-  direction.classList.add(i);
-  direction.setAttribute("style", `--clr:${color[directions.indexOf(i)]}`);
+// Function to create a direction element
+function createDirection(directionName, color) {
+  const direction = document.createElement("div");
+  direction.classList.add(directionName);
+  direction.style.setProperty("--clr", color);
 
   for (let j = 0; j < 9; j++) {
-    let span = document.createElement("span");
+    const span = document.createElement("span");
     direction.appendChild(span);
 
-    let name = "WALBERST1";
-
-    if (i === "top") {
-      let nameCharacters = name.split("");
-      span.innerHTML = nameCharacters[j];
+    if (directionName === "top" && j === 4) {
+      span.textContent = "AW";
       span.classList.add("nameLetters");
     }
   }
 
-  direction
-    .querySelector("span")
-    .setAttribute("style", `--clr:${color[directions.indexOf(i)]}`);
+  return direction;
 }
 
-var isKeyDown = false;
+// Create direction elements and append them to the container
+directions.forEach((directionName, index) => {
+  const colorIndex = index % colors.length;
+  const directionElement = createDirection(directionName, colors[colorIndex]);
+  box.appendChild(directionElement);
+});
+
+let isKeyDown = false;
+let posX = -100;
+let posY = -330;
 rotateCube(-100, -330);
 
-box.addEventListener("mousedown", function (e) {
-  isKeyDown = true;
-  rotateCube(e.clientX, e.clientY);
-});
+// Define rotation buttons
+const buttonTop = document.getElementById("rotate_up");
+const buttonBottom = document.getElementById("rotate_down");
+const buttonLeft = document.getElementById("rotate_left");
+const buttonRight = document.getElementById("rotate_right");
 
-box.addEventListener("mouseup", function (e) {
-  isKeyDown = false;
-});
+// Function to handle button clicks
+function handleRotationClick(deltaX, deltaY) {
+  posX += deltaX;
+  posY += deltaY;
+  rotateCube(posX, posY);
+}
 
-box.addEventListener("mousemove", function (e) {
-  isKeyDown && rotateCube(e.clientX, e.clientY);
-});
+// Add click event listeners to the rotation buttons
+buttonTop.addEventListener("click", () => handleRotationClick(0, 50));
+buttonBottom.addEventListener("click", () => handleRotationClick(0, -50));
+buttonLeft.addEventListener("click", () => handleRotationClick(-50, 0));
+buttonRight.addEventListener("click", () => handleRotationClick(50, 0));
 
+// Function to rotate the cube
 function rotateCube(x, y) {
-  let Xvalue = Math.floor(x / 2 + 100);
-  let Yvalue = Math.floor(y / 2 + 100);
-
+  const Xvalue = Math.floor(x / 2 + 100);
+  const Yvalue = Math.floor(y / 2 + 100);
   box.style.transform = `rotateX(${Yvalue}deg) rotateY(${Xvalue}deg)`;
 }

@@ -9,15 +9,17 @@ body {
   min-height: 100vh;
   background: linear-gradient(
     to bottom right,
-    rgb(104, 9, 104),
-    rgb(179, 54, 131)
+    rgb(33, 33, 33),
+    rgb(77, 77, 77)
   );
   overflow: hidden;
 }
 
 .container {
-  width: 600px;
-  height: 600px;
+  width: 100vw;
+  height: 100vh;
+  max-width: 1000px;
+  max-height: 1000px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -34,7 +36,6 @@ body {
   height: 350px;
   transform-style: preserve-3d;
   transition: all 0.5s ease-out;
-  cursor: move;
 }
 
 .box div {
@@ -128,4 +129,32 @@ body {
 
 .back {
   transform: translateZ(-175px);
+}
+
+#rotate_up {
+  position: absolute;
+  top: 0px;
+}
+
+#rotate_down {
+  position: absolute;
+  bottom: 0px;
+}
+
+#rotate_left {
+  position: absolute;
+  left: 0px;
+}
+
+#rotate_right {
+  position: absolute;
+  right: 0px;
+}
+
+.rotate_cube {
+  font-size: 3.5rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #fff;
 }
