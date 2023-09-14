@@ -30,6 +30,30 @@ body {
   perspective: 2000px;
 }
 
+.scoreboard {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  font-size: 1.2rem;
+  font-family: sans-serif;
+  color: #333;
+  background-color: #bfbfbf;
+  width: 300px;
+  height: 150px;
+  padding: 20px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction: column;
+  font-weight: 700;
+  border-radius: 10px;
+  user-select: none;
+}
+
+.scoreboard:hover {
+  background-color: #fff;
+}
+
 .box {
   position: absolute;
   width: 350px;
@@ -94,13 +118,9 @@ body {
   transform: rotate(-40deg);
 }
 
-.nameLetters {
-  font-size: 3.5rem !important;
-  font-weight: 700;
-  z-index: 10000 !important;
-  font-family: sans-serif;
-  user-select: none;
-  pointer-events: none;
+span img {
+  width: 100%;
+  opacity: 0.3;
 }
 
 .top {
@@ -108,9 +128,21 @@ body {
   transform: rotateX(90deg);
 }
 
+.cube_top {
+  background-color: #ff4500 !important;
+}
+
 .bottom {
   top: 175px;
   transform: rotateX(90deg);
+}
+
+.cube_bottom {
+  background-color: #ffb6c1 !important;
+}
+
+.bottom img {
+  transform: rotateY(180deg);
 }
 
 .left {
@@ -118,17 +150,41 @@ body {
   transform: rotateY(90deg);
 }
 
+.cube_left {
+  background-color: #ffd700 !important;
+}
+
+.left img {
+  transform: rotateY(180deg);
+}
+
 .right {
   left: 175px;
   transform: rotateY(90deg);
+}
+
+.cube_right {
+  background-color: #8a2be2 !important;
 }
 
 .front {
   transform: translateZ(175px);
 }
 
+.cube_front {
+  background-color: #32cd32 !important;
+}
+
 .back {
   transform: translateZ(-175px);
+}
+
+.cube_back {
+  background-color: #4169e1 !important;
+}
+
+.back img {
+  transform: rotateY(180deg);
 }
 
 #rotate_up {
@@ -157,4 +213,21 @@ body {
   border: none;
   cursor: pointer;
   color: #fff;
+}
+
+.rotate_block {
+  font-size: 1.8rem;
+  background-color: #ffffff99;
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+  z-index: 10000;
+  cursor: pointer;
+  font-weight: 900;
+  display: none;
+}
+
+.box div span:hover .rotate_block {
+  display: block;
 }
