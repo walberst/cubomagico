@@ -134,28 +134,20 @@ span img {
 
 .bottom {
   top: 175px;
-  transform: rotateX(90deg);
+  transform: rotateX(270deg);
 }
 
 .cube_bottom {
   background-color: #ffb6c1 !important;
 }
 
-.bottom img {
-  transform: rotateY(180deg);
-}
-
 .left {
   right: 175px;
-  transform: rotateY(90deg);
+  transform: rotateY(270deg);
 }
 
 .cube_left {
   background-color: #ffd700 !important;
-}
-
-.left img {
-  transform: rotateY(180deg);
 }
 
 .right {
@@ -176,15 +168,11 @@ span img {
 }
 
 .back {
-  transform: translateZ(-175px);
+  transform: translateZ(-175px) rotateY(180deg);
 }
 
 .cube_back {
   background-color: #4169e1 !important;
-}
-
-.back img {
-  transform: rotateY(180deg);
 }
 
 #rotate_up {
